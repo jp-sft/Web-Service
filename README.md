@@ -28,3 +28,16 @@ ___
   * Afficher les produits en rupture de stock
   * Afficher les factures réglées et les factures non encore réglées
   * La liste des dettes par client
+
+### Diagrammes de structure ou diagrammes statiques:
+* Diagramme des composant [link](https://fr.wikipedia.org/wiki/Diagramme_de_composants)
+* Diagramme des paquetages [link](https://fr.wikipedia.org/wiki/Diagramme_des_paquetages)
+
+### Diagrammes de comportement:
+* Diagramme états-transitions [link](https://fr.wikipedia.org/wiki/Diagramme_de_cas_d%27utilisation)
+* Diagramme de cas d'utilisation [link](https://fr.wikipedia.org/wiki/Diagramme_de_cas_d%27utilisation)
+* Diagramme états-transitions [link](https://fr.wikipedia.org/wiki/Diagramme_d%27activit%C3%A9)
+
+### Diagrammes d'interaction ou diagrammes dynamiques:
+* Diagramme de séquence [link](https://fr.wikipedia.org/wiki/Diagramme_de_s%C3%A9quence)
+
