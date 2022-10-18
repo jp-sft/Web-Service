@@ -31,6 +31,7 @@ ___
 
 ### Diagrammes de structure ou diagrammes statiques:
 * Diagramme des composant [link](https://fr.wikipedia.org/wiki/Diagramme_de_composants)
+* Diagramme de classes
 * Diagramme des paquetages [link](https://fr.wikipedia.org/wiki/Diagramme_des_paquetages)
 
 ### Diagrammes de comportement:
