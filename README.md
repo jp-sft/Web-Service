@@ -15,6 +15,7 @@ ___
 * `facture-service`, `reglement-service` (Java [Link](https://fr.wikipedia.org/wiki/Java_(technique))
 * **Annuaire** `eureka-discovery` [doc](https://spring.io/guides/gs/service-registration-and-discovery/)
 * **proxy** `gateway` (Spring Cloud Gateway [doc](https://spring.io/projects/spring-cloud-gateway))
+* **Micro-Service de configuration** `config-service` (Spring Cloud Config [doc](https://docs.spring.io/spring-cloud-config/docs/current/reference/html/))
 
 <u>***Fonctionnalités***</u> :
 * Gérer `clients`, `produits`, `catégories`, `factures`, `devises` et `règlements`
@@ -31,7 +32,7 @@ ___
 
 ### Diagrammes de structure ou diagrammes statiques:
 * Diagramme des composant [link](https://fr.wikipedia.org/wiki/Diagramme_de_composants)
-* Diagramme de classes
+* Diagramme de classes <br><img src="./class_diagram_v1.png">
 * Diagramme des paquetages [link](https://fr.wikipedia.org/wiki/Diagramme_des_paquetages)
 
 ### Diagrammes de comportement:
