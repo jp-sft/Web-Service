@@ -1,7 +1,8 @@
-package tn.ipsas.produitservice.domain;
+package tn.ipsas.paymentservice.domain.order.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-import org.hibernate.annotations.GeneratorType;
+import tn.ipsas.paymentservice.domain.order.OrderLine;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class Product {
     private Category category;
 
     // For stat
+    @JsonIgnore
     @Transient
     private List<OrderLine> orderLines = new ArrayList<>();
 }

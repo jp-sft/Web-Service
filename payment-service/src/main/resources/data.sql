@@ -89,3 +89,21 @@ INSERT INTO PRODUCTS( unit_price, category_id, weight, name, description) VALUES
 INSERT INTO PRODUCTS( unit_price, category_id, weight, name, description) VALUES ( 580, 11, 4.2, 'PC PORTABLE LENOVO IDEAPAD 3 14IGL05 N4020 4GO 1TO - GRIS', 'Écran 14" HD - Processeur: Intel Celeron N4020 (1,10 GHz up to 2.80 GHz , 4Mo de mémoire cache, Dual-Core) - Système d''exploitation: FreeDos - Mémoire RAM: 4 Go DDR4-2400 - Disque Dur: 1 To HDD - Carte Graphique: Intel UHD Graphics 600 avec Wi-Fi, Bluetooth, 1x USB 2.0, 2x USB 3.2 Gen 1, 1x HDMI 1.4b, 1x prise combinée casque/microphone (3,5 mm) et lecteur de carte - Couleur: Gris - Garantie: 1 an');
 --Sac et sacoches
 INSERT INTO PRODUCTS( unit_price, category_id, weight, name, description) VALUES ( 75, 38 , 0.2, 'SAC À DOS LENOVO B510 15.6" - NOIR (GX40Q75214)', 'Sac à dos LENOVO B510 Pour Pc Portables 15.6" - Compartiment rembourré pour ordinateur portable séparé, compartiment d''accès rapide, poche antivol - Tissu résistant à l''eau en polyester - Bandoulière réglable - Couleur: Noir');
+
+INSERT INTO ORDERS(status) VALUES ( 'CREATED' );
+INSERT INTO ORDERS(status) VALUES ( 'DELIVERED' );
+INSERT INTO ORDERS(status) VALUES ( 'PAID' );
+INSERT INTO ORDERS(status) VALUES ( 'SHIPPING' );
+
+INSERT INTO ORDER_LINES(order_id, product_id, quantity, sub_total) VALUES ( 1, 1, 1 ,545 );
+INSERT INTO ORDER_LINES(order_id, product_id, quantity, sub_total) VALUES ( 1, 4, 1 , 75);
+INSERT INTO ORDER_LINES(order_id, product_id, quantity, sub_total) VALUES ( 2, 2, 4 , 835*4);
+INSERT INTO ORDER_LINES(order_id, product_id, quantity, sub_total) VALUES ( 2, 1, 3, 545*3 );
+INSERT INTO ORDER_LINES(order_id, product_id, quantity, sub_total) VALUES ( 3, 2, 1, 835  );
+
+
+INSERT INTO CURRENCIES(code, name) VALUES ( 'TND', 'Dinard Tunisien' );
+INSERT INTO CURRENCIES(code, name) VALUES ( 'EUR', 'EURO' );
+INSERT INTO CURRENCIES(code, name) VALUES ( 'USD', 'Dollar américain' );
+
+INSERT INTO PAYMENTS(order_id, amount, currency_id, payment_type, bank, name) VALUES ( 3, 835, 1, 'CASH', 'Attijari', 'CASH1' )
