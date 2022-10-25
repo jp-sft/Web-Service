@@ -1,0 +1,1 @@
+INSERT INTO USER(user_type, login, password, address, birth_days, email, first_name, last_name, phone_number, gender, city) VALUES('CUSTOMER',  'customer1', 'cust1', 'Route de tunis KM1.5 IMM S1 3002', '2022-12-31', 'fakeEmail1.fake.com', 'Hamadi', 'BOUASSIDA', '+21674441772','MALE', 'SFAX')

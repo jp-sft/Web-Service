@@ -54,6 +54,9 @@ ___
 
 ## Service Ports
 
-| Service         | Description      | Port   |
-|-----------------|------------------|--------|
-| product-service | Product Services | 8000   |
+| Service         | Description      | Port |
+|-----------------|------------------|------|
+| product-service | Product Services | 8000 |
+| facture-service | Facture Services | 8001 |
+| payment-service | Payment Services | 8002 |
+| client-service  | Client Services  | 8003 |

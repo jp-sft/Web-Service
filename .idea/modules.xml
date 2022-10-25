@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Web/Web.iml" filepath="$PROJECT_DIR$/Web/Web.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Web-Service.iml" filepath="$PROJECT_DIR$/.idea/Web-Service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-service/client-service.iml" filepath="$PROJECT_DIR$/client-service/client-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/facture-service/facture-service.iml" filepath="$PROJECT_DIR$/facture-service/facture-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/payment-service/payment-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/produit-service/produit-service.iml" filepath="$PROJECT_DIR$/produit-service/produit-service.iml" />
