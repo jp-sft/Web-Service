@@ -90,14 +90,16 @@ INSERT INTO PRODUCTS( unit_price, category_id, weight, name, description) VALUES
 --Sac et sacoches
 INSERT INTO PRODUCTS( unit_price, category_id, weight, name, description) VALUES ( 75, 38 , 0.2, 'SAC À DOS LENOVO B510 15.6" - NOIR (GX40Q75214)', 'Sac à dos LENOVO B510 Pour Pc Portables 15.6" - Compartiment rembourré pour ordinateur portable séparé, compartiment d''accès rapide, poche antivol - Tissu résistant à l''eau en polyester - Bandoulière réglable - Couleur: Noir');
 
-INSERT INTO ORDERS(status) VALUES ( 'CREATED' );
-INSERT INTO ORDERS(status) VALUES ( 'DELIVERED' );
-INSERT INTO ORDERS(status) VALUES ( 'PAID' );
-INSERT INTO ORDERS(status) VALUES ( 'SHIPPING' );
+INSERT INTO USER(user_type, login, password, address, birth_days, email, first_name, last_name, phone_number, gender, city) VALUES('CUSTOMER',  'customer1', 'cust1', 'Route de tunis KM1.5 IMM S1 3002', '2022-12-31', 'fakeEmail1.fake.com', 'Hamadi', 'BOUASSIDA', '+21674441772','MALE', 'SFAX');
 
-INSERT INTO ORDER_LINES(order_id, product_id, quantity) VALUES ( 1, 1, 1 );
-INSERT INTO ORDER_LINES(order_id, product_id, quantity) VALUES ( 1, 4, 1 );
-INSERT INTO ORDER_LINES(order_id, product_id, quantity) VALUES ( 2, 2, 4 );
-INSERT INTO ORDER_LINES(order_id, product_id, quantity) VALUES ( 3, 1, 3 );
-INSERT INTO ORDER_LINES(order_id, product_id, quantity) VALUES ( 3, 2, 1 );
+INSERT INTO ORDERS(status, customer_id) VALUES ( 'CREATED'   , 1);
+INSERT INTO ORDERS(status, customer_id) VALUES ( 'DELIVERED' , 1);
+INSERT INTO ORDERS(status, customer_id) VALUES ( 'PAID'      , 1);
+INSERT INTO ORDERS(status, customer_id) VALUES ( 'SHIPPING'  , 1);
+
+INSERT INTO ORDER_LINES(order_id, product_id,quantity) VALUES ( 1, 1, 1 );
+INSERT INTO ORDER_LINES(order_id, product_id,quantity) VALUES ( 1, 4, 1 );
+INSERT INTO ORDER_LINES(order_id, product_id,quantity) VALUES ( 2, 2, 4 );
+INSERT INTO ORDER_LINES(order_id, product_id,quantity) VALUES ( 3, 1, 3 );
+INSERT INTO ORDER_LINES(order_id, product_id,quantity) VALUES ( 3, 2, 1 );
 

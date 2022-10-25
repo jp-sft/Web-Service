@@ -1,6 +1,7 @@
 package tn.ipsas.factureservice.domain;
 
 import lombok.*;
+import tn.ipsas.factureservice.domain.user.Customer;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,4 +26,8 @@ public class Order {
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private List<OrderLine> orderLines = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 }
