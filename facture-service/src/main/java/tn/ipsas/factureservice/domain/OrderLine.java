@@ -1,5 +1,6 @@
 package tn.ipsas.factureservice.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import tn.ipsas.factureservice.domain.product.Product;
 
@@ -24,6 +25,7 @@ public class OrderLine {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
+    @JsonIgnore
     private Order order;
 
     @ManyToOne

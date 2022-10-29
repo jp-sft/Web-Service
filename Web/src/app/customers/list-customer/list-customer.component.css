@@ -1,0 +1,68 @@
+table {
+  width: 100%;
+}
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-diagram {
+  min-width: 100px;
+  border: 2px solid black;
+  padding: 8px;
+  margin: 0;
+  height: fit-content;
+}
+.example-element-name  {
+  font-weight: bolder;
+}
+.example-element-diagram>img {
+  width: 120px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+}
+.example-element-description>div {
+  display: flex;
+}
+.example-element-description .title {
+  width: 100px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+.action {
+  display: flex;
+}
+.action button{
+  padding: 0 5px;
+  margin: 5px 5px;
+  min-width: 20px;
+}
+

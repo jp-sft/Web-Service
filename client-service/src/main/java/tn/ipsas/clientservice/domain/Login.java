@@ -17,9 +17,10 @@ public class Login {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    //TODO: Les clients n'ont pas besoin de login et password
+    @Column(unique = false, nullable = true)
     private String login;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = false, nullable = true)
     private String password;
 }

@@ -1,0 +1,20 @@
+<span class="spacer"></span>
+<form [formGroup]="productToDeleteForm" (ngSubmit)="onSubmit()">
+  <!--  query -->
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Product Name</mat-label>
+      <input matInput placeholder="Ex. Milk" formControlName="query">
+      <mat-hint> Look for product name and description</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <span class="spacer"></span>
+    <button mat-raised-button type="submit" [disabled]="!productToDeleteForm.valid">Search</button>
+    <span class="spacer"></span>
+    <small> Complete the form to enable button !</small>
+    <span class="spacer"></span>
+  </div>
+</form>
+<span class="spacer"></span>

@@ -17,7 +17,5 @@ public class Account extends Login{
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date createdDate;
 
-    @JsonIgnore
-    @ToString.Exclude
-    private Byte[] profilePicture;
+    private String profileUrl;
 }

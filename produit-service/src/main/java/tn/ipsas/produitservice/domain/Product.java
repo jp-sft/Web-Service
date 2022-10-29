@@ -1,5 +1,6 @@
 package tn.ipsas.produitservice.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.GeneratorType;
 
@@ -25,11 +26,16 @@ public class Product {
     @Column(name="unit_price")
     private Double unitPrice;
 
+    //TODO : Add Image
+    @Column(name="image_path")
+    private String imagePath;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
     // For stat
+    @JsonIgnore
     @Transient
     private List<OrderLine> orderLines = new ArrayList<>();
 }

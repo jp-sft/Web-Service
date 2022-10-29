@@ -1,0 +1,34 @@
+form {
+  width: fit-content;
+}
+::ng-deep td  .mat-form-field-appearance-fill .mat-form-field-flex {
+   border-radius: 0;
+   padding: 0;
+}
+::ng-deep td .mat-input-element {
+  text-align: center!important;
+}
+::ng-deep td .mat-form-field-infix {
+  display: block;
+  position: relative;
+  flex: auto;
+  min-width: 150px;
+  max-width: 300px;
+  width: fit-content;
+}
+::ng-deep td .mat-form-field-underline {
+  position: absolute;
+  width: 0!important;
+  pointer-events: none;
+  transform: scale3d(1, 1.0001, 1);
+}
+::ng-deep td .mat-form-field-wrapper {
+   padding-bottom: 0;
+}
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  vertical-align: middle;
+  text-align: center;
+}
+tr{
+  width: 100%;
+}

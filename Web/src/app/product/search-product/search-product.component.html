@@ -1,0 +1,22 @@
+<span class="spacer"></span>
+<form [formGroup]="productToSearchForm" (ngSubmit)="onSubmit()">
+  <!--  query -->
+  <!--  queryCategory -->
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Product Name</mat-label>
+      <input matInput placeholder="Ex. Milk" formControlName="query">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Category Name</mat-label>
+      <input matInput placeholder="Ex. PC" formControlName="queryCategory">
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button type="submit" [disabled]="!productToSearchForm.valid">Search</button>
+  </div>
+</form>
+<span class="spacer"></span>

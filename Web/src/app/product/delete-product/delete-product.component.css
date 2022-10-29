@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  max-width: 1200px;
+}
+
+form {
+  max-width: max-content;
+}
+form>div{
+  display: flex;
+  width: 100%;
+  padding: 0 10px;
+}
+form>div:has(button)>small{
+  color: darkgray;
+  margin-left: 10px;
+  align-self: end;
+}
+
+.mat-form-field:has(textarea) {
+  width: inherit;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

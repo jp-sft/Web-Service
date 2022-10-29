@@ -1,0 +1,52 @@
+<section class="products">
+  <div class="add-product">
+    <div>
+      <span class="spacer"></span>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="action">
+        <mat-radio-button class="example-radio-button" [value]="'ADD'">
+          ADD
+        </mat-radio-button>
+        <mat-radio-button class="example-radio-button" [disabled]="updateIsDisable" [value]="'UPDATE'">
+          UPDATE
+        </mat-radio-button>
+        <mat-radio-button class="example-radio-button" [value]="'SEARCH'">
+          SEARCH
+        </mat-radio-button>
+        <mat-radio-button class="example-radio-button" [value]="'DELETE'">
+          DELETE
+        </mat-radio-button>
+      </mat-radio-group>
+      <span class="spacer"></span>
+    </div>
+    <app-add-product *ngIf="action=='ADD'"
+                     [categories]="categories"
+                     [productForm]="productForm"
+                     (addedProductEvent)="setAddedProduct($event)">
+    </app-add-product>
+    <app-update-product *ngIf="action=='UPDATE'"
+                        [categories]="categories"
+                        [productForm]="productToUpdateForm"
+                        (updatedProductEvent)="setUpdatedProduct($event)">
+    </app-update-product>
+    <app-search-product *ngIf="action=='SEARCH'"
+                        [productToSearchForm]="productToSearchForm"
+                        (searchedProductEvent)="setSearchedProduct($event)">
+
+    </app-search-product>
+    <app-delete-product *ngIf="action=='DELETE'"
+                        [productToDeleteForm]="productToDeleteForm"
+                        (deletedProductsEvent)="setDeletedProducts($event)">
+
+    </app-delete-product>
+  </div>
+  <div class="list-product">
+    <app-list-product [products]="products"
+                      (updateProductEvent)="setProductToUpdate($event)"
+                      (deletedProductEvent)="setProductToDelete($event)">
+
+    </app-list-product>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+app-list-customer {
+  width: calc(100% - 465px);
+}
+app-form-customer {
+  max-width: 465px;
+}

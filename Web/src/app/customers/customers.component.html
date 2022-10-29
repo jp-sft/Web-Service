@@ -1,0 +1,12 @@
+
+<app-form-customer [dataSource]="dataSource"
+                   (addedCustomerEvent)="setAddedCustomer($event)"
+                   (updatedCustomerEvent)="setUpdatedCustomer($event)"
+                   [action]="action"
+                   (changedActionEvent)="changeActionToAdd($event)">
+</app-form-customer>
+<span class="spacer"></span>
+<app-list-customer [customers]="customers"
+                   (updateCustomerEvent)="setCustomerToUpdate($event)"
+                   (deletedCustomerEvent)="setCustomerToDelete($event)">
+</app-list-customer>

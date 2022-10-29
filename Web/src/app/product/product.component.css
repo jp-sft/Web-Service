@@ -1,0 +1,22 @@
+.products {
+  display: flex;
+}
+.list-product, .add-product{
+  margin: 20px;
+}
+.add-product {
+  width: 500px;
+}
+
+.list-product {
+  width: calc(100% - 600px); /* 100% - la taile du formulaire - 100px */
+}
+
+.add-product .example-radio-button{
+  padding: 20px;
+}
+.add-product>div{
+  display: flex;
+  width: 500px;
+  padding: 10px;
+}

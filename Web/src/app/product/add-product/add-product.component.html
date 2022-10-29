@@ -1,0 +1,49 @@
+<span class="spacer"></span>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <!--  name-->
+  <!--  weight-->
+  <!--  description-->
+  <!--  unitPrice-->
+  <!--  category-->
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Product Name</mat-label>
+      <input matInput placeholder="Ex. Milk" formControlName="name">
+    </mat-form-field>
+    <span class="spacer"></span>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categories" [value]="category"> {{category.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Unit Price</mat-label>
+      <input matInput type="number" formControlName="unitPrice">
+      <span matSuffix>TND&nbsp;</span>
+    </mat-form-field>
+    <span class="spacer"></span>
+    <mat-form-field appearance="fill">
+      <mat-label>Weight</mat-label>
+      <input matInput type="number" formControlName="weight">
+      <span matSuffix>kg&nbsp;</span>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea [cols]="1000" [rows]="10" [placeholder]="'Full description of product'" matInput
+                formControlName="description"> </textarea>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button type="submit" [disabled]="!productForm.valid">Add</button>
+
+    <small> Complete the form to enable button !</small>
+    <span class="spacer"></span>
+  </div>
+</form>
+<span class="spacer"></span>

@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Web';
+  showFiller: boolean = false;
+  logging: boolean = false;
 }

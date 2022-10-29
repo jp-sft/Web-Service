@@ -1,0 +1,8 @@
+<h2>Messages
+  <button mat-button color="warn" type="button" class="clear" (click)="messageService.clear()">clear</button>
+</h2>
+<ng-container *ngIf="messageService.messages.length">
+  <ol>
+    <li *ngFor='let message of messageService.messages'> {{messageService.messages[messageService.messages.length -1]}} </li>
+  </ol>
+</ng-container>

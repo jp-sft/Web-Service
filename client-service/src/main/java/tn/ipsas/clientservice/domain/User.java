@@ -30,5 +30,5 @@ public class User extends Account{
 
     private String phoneNumber;
 
-    private String address;
+    private String address;  //TODO: Create Entity Address
 }

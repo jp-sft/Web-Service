@@ -1,0 +1,70 @@
+<h3>{{action | uppercase}} Customer</h3>
+<span class="spacer"></span>
+<form [formGroup]="dataSource" (ngSubmit)="onSubmit()">
+  <!--  'id',-->
+  <!--  'login',-->
+  <!--  'password',-->
+  <!--  'rePassword',-->
+  <!--  'createdDate',-->
+  <!--  'profileUrl',-->
+  <!--  'firstName',-->
+  <!--  'lastName',-->
+  <!--  'dateOfBirth',-->
+  <!--  'sex',-->
+  <!--  'email',-->
+  <!--  'phoneNumber',-->
+  <!--  'address',-->
+  <!--  'city',-->
+<!--  <input type="hidden" formControl="id">-->
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Firstname</mat-label>
+      <input matInput placeholder="Ex. John" formControlName="firstName">
+    </mat-form-field>
+    <span class="spacer"></span>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Ex. Ben" formControlName="lastName">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Gender</mat-label>
+      <input matInput placeholder="Ex. Female" formControlName="sex">
+    </mat-form-field>
+    <span class="spacer"></span>
+    <mat-form-field appearance="fill">
+      <mat-label>Birth Day</mat-label>
+      <input matInput type="string" formControlName="dateOfBirth">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input matInput placeholder="Ex. Sfax" formControlName="city">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input matInput placeholder="Ex. 2ème rue..." formControlName="address">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+    </mat-form-field>
+    <span class="spacer"></span>
+    <mat-form-field appearance="fill">
+      <mat-label>Phone Number</mat-label>
+      <input matInput type="text" placeholder="Exp: +216 28...." formControlName="phoneNumber">
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button type="submit" [disabled]="!this.dataSource.valid">Submit</button>
+    <button *ngIf="action=='UPDATE'" mat-raised-button (click)="setFormToAdd()">Cancel</button>
+    <span class="spacer"></span>
+    <small> Complete the form to enable button !</small>
+    <span class="spacer"></span>
+  </div>
+</form>
+<span class="spacer"></span>
