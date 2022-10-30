@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
-import {Order} from "../../model/order";
+import {Order, OrderStatus} from "../../model/order";
 import {MatTable, MatTableDataSource} from "@angular/material/table";
 import {Product} from "../../model/product";
 

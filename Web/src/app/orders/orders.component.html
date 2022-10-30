@@ -4,26 +4,33 @@
     <div class="action">
       <button mat-button color="primary" class="p-2 me-2"
               (click)="viewType = 'FORM'"
-              *ngIf="viewType!='FORM'">Create</button>
+              *ngIf="viewType!='FORM'">Create
+      </button>
       <button mat-button color="primary" class="p-2 me-2"
               (click)="saveOrder()"
               *ngIf="viewType=='FORM'"
-              [disabled]="!orderForm.valid">Save</button>
+              [disabled]="!orderForm.valid">Save
+      </button>
       <button mat-button color="accent" class="p-2 me-2"
               (click)="cancelSaveOrder()"
-              *ngIf="viewType=='FORM'">Cancel</button>
+              *ngIf="viewType=='FORM'">Cancel
+      </button>
       <button mat-button
               *ngIf="viewType=='LIST'"
               [disabled]="orderSelected === null"
-              class="p-2 me-2">Edit</button>
+              class="p-2 me-2">Edit
+      </button>
       <button mat-button color="warn" class="p-2"
               [disabled]="orderSelected === null"
-              *ngIf="viewType=='LIST'">Delete</button>
+              *ngIf="viewType=='LIST'">Delete
+      </button>
     </div>
   </div>
   <span class="spacer"></span>
   <div class="search">
-    <app-search-order></app-search-order>
+    <app-search-order (statusFilterEvent)="setStatusFiltered($event)"
+                      (customerFilterEvent)="setCustomerFiltered($event)"
+                      [orders]="orders"></app-search-order>
   </div>
 </header>
 <main class="d-flex">

@@ -36,6 +36,8 @@ import { ListCustomerComponent } from './customers/list-customer/list-customer.c
 import { AccountingComponent } from './accounting/accounting.component';
 import { SearchOrderComponent } from './orders/search-order/search-order.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -58,27 +60,29 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     AccountingComponent,
     SearchOrderComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        //import HttpClientModule after BrowserModule.
-        HttpClientModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSelectModule,
-        MatButtonModule,
-        MatTableModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatToolbarModule,
-        MatRadioModule,
-        FormsModule,
-        MatListModule,
-        MatCheckboxModule,
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    //import HttpClientModule after BrowserModule.
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatRadioModule,
+    FormsModule,
+    MatListModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatAutocompleteModule,
 
-    ],
+  ],
   providers: [
     MessageService,
     httpInterceptorProviders

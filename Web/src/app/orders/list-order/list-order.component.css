@@ -2,6 +2,7 @@ mat-table{
   width: fit-content;
 }
 th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  padding: 10px;
   vertical-align: middle;
   text-align: center;
 }

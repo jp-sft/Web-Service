@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Order} from "../model/order";
+import {Order, OrderStatus} from "../model/order";
 import {MessageService} from "../message.service";
 import {OrderService} from "./orders.service";
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
@@ -32,6 +32,7 @@ export class OrdersComponent implements OnInit {
   orderSelected: Order | null = null;
   orders: Order[] = [];
   orderForm: FormGroup = new FormGroup(customControlOrderForm);
+  statusFilter!: OrderStatus;
 
   saveClicked: boolean = false;
 
@@ -79,5 +80,16 @@ export class OrdersComponent implements OnInit {
 
   cancelSaveOrder() {
     this.viewType = 'LIST';
+  }
+
+  setStatusFiltered(status: OrderStatus) {
+    this.statusFilter = status;
+    this.orders = this.orders.filter(order => {
+      return order.status.toUpperCase() == this.statusFilter.toUpperCase();
+    })
+  }
+
+  setCustomerFiltered(customer: Customer) {
+    console.log(JSON.stringify(customer))
   }
 }
