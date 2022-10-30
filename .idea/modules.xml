@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/client-service/client-service.iml" filepath="$PROJECT_DIR$/client-service/client-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/eureka-discovery-service/eureka-discovery-service.iml" filepath="$PROJECT_DIR$/eureka-discovery-service/eureka-discovery-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/facture-service/facture-service.iml" filepath="$PROJECT_DIR$/facture-service/facture-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-service/gateway-service.iml" filepath="$PROJECT_DIR$/gateway-service/gateway-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/payment-service/payment-service.iml" filepath="$PROJECT_DIR$/payment-service/payment-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/produit-service/produit-service.iml" filepath="$PROJECT_DIR$/produit-service/produit-service.iml" />
     </modules>
