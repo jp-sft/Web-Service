@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, Validator} from "@angular/forms";
+import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 import {Order, OrderStatus, SearchOrderBy} from "../../model/order";
 import {map, Observable, startWith} from "rxjs";
 import {Customer} from "../../model/customer";
@@ -13,8 +13,8 @@ export class SearchOrderComponent implements OnInit {
 
   // Input & Output
   @Output() statusFilterEvent = new EventEmitter<OrderStatus>();
-  @Output() customerFilterEvent = new EventEmitter<Customer>();
-  @Input()  orders! : Order[];
+  @Output() customerIdFilterEvent = new EventEmitter<number>();
+  @Input() customersFilterMapByFullName = new Map();
 
   // Form Model && Control
   byStatusControl = new FormControl<string>('')
@@ -51,17 +51,14 @@ export class SearchOrderComponent implements OnInit {
     this.filteredOptionsCustomer = this.byCustomerControl.valueChanges.pipe(
       startWith(''),
       map(value => {
-        let customers = this.orders.map(o => o.customer);
-        // @ts-ignore
-        let customers_name = new Set(customers.map(c =>(c.firstName + ' ' + c.lastName).toLowerCase()));
-        if (value != null && customers_name.has(value.toLowerCase())) {
-          customers.forEach(cust => {
-            console.log(JSON.stringify(cust))
-          })
+
+          // @ts-ignore
+        if (this.customersFilterMapByFullName.has(value.trim())) {
+            this.customerIdFilterEvent.emit(this.customersFilterMapByFullName.get(value))
+          }
+        return Array.from(this.customersFilterMapByFullName.keys()) as string[];
         }
-        return new Set(customers)
-      }),
-    );
+      ))
   }
 
   private _filter(value: string): string[] {

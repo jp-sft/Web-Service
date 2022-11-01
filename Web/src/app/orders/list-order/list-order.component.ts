@@ -24,7 +24,6 @@ export class ListOrderComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-
     if (!changes['orders'].firstChange) {
       this.orders = changes['orders'].currentValue
       this.table.dataSource = new MatTableDataSource(this.orders);
@@ -33,9 +32,7 @@ export class ListOrderComponent implements OnInit {
   }
 
   setOrderSelected(order : Order){
-    // @ts-ignore
-    // if (! order['id'] in this.idsSelected)
-    //   this.ordersSelectedEvent.emit([order]);
+    this.orderSelectedEvent.emit(order);
   }
 
 

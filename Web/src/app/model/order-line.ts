@@ -20,12 +20,22 @@ export class OrderLine {
 
   static asFormGroup(orderLine: OrderLine): FormGroup {
     return new FormGroup({
-      id: new FormControl(orderLine.quantity),
+      id: new FormControl(orderLine.id),
       quantity: new FormControl(orderLine.quantity, Validators.required),
-      taxStatus: new FormControl(orderLine.weight, Validators.required),
-      weight: new FormControl(orderLine.subTotal, Validators.required),
-      subTotal: new FormControl(orderLine.product, Validators.required),
+      taxStatus: new FormControl(orderLine.taxStatus),
+      weight: new FormControl(orderLine.weight),
+      subTotal: new FormControl(orderLine.subTotal, Validators.required),
       product: new FormControl(orderLine.product, Validators.required)
     });
   }
 }
+
+export const
+  customControlOrderLineForm = {
+    id: new FormControl<number | null>(null),
+    quantity: new FormControl<number>(0),
+    taxStatus: new FormControl<string | null>('CREATED'),
+    weight: new FormControl<number>(0),
+    subTotal: new FormControl<number>(0),
+    product: new FormControl<Product | null>(null)
+  }

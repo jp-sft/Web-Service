@@ -3,45 +3,47 @@
     <h2>orders</h2>
     <div class="action">
       <button mat-button color="primary" class="p-2 me-2"
-              (click)="viewType = 'FORM'"
-              *ngIf="viewType!='FORM'">Create
+              (click)="viewType = VIEW_TYPES.FORM"
+              *ngIf="viewType != VIEW_TYPES.FORM">Create
       </button>
-      <button mat-button color="primary" class="p-2 me-2"
-              (click)="saveOrder()"
-              *ngIf="viewType=='FORM'"
+     <button mat-button color="primary" class="p-2 me-2"
+              (click)="saveCurentOrder()"
+               *ngIf="viewType==VIEW_TYPES.FORM"
               [disabled]="!orderForm.valid">Save
       </button>
       <button mat-button color="accent" class="p-2 me-2"
               (click)="cancelSaveOrder()"
-              *ngIf="viewType=='FORM'">Cancel
+              *ngIf="viewType==VIEW_TYPES.FORM">Cancel
       </button>
-      <button mat-button
-              *ngIf="viewType=='LIST'"
-              [disabled]="orderSelected === null"
-              class="p-2 me-2">Edit
+      <button mat-button class="p-2 me-2"
+              (click)="editOrderSelected()"
+              *ngIf="viewType == VIEW_TYPES.LIST"
+              [disabled]="orderSelected === null">Edit
       </button>
       <button mat-button color="warn" class="p-2"
+              (click)="deleteCurentOrder()"
               [disabled]="orderSelected === null"
-              *ngIf="viewType=='LIST'">Delete
+              *ngIf="viewType==VIEW_TYPES.LIST">Delete
       </button>
     </div>
   </div>
   <span class="spacer"></span>
   <div class="search">
     <app-search-order (statusFilterEvent)="setStatusFiltered($event)"
-                      (customerFilterEvent)="setCustomerFiltered($event)"
-                      [orders]="orders"></app-search-order>
+                      (customerIdFilterEvent)="setCustomerFiltered($event)"
+                      [customersFilterMapByFullName]="customersFilterMapByFullName"></app-search-order>
   </div>
 </header>
 <main class="d-flex">
   <span class="spacer"></span>
-  <app-list-order *ngIf="viewType == 'LIST'"
+  <app-list-order *ngIf="viewType == VIEW_TYPES.LIST"
                   [orders]="orders"
                   (orderSelectedEvent)="setOrdersSelected($event)"></app-list-order>
   <app-form-order
     [dataSource]="orderForm"
-    [saveClicked]="saveClicked"
     [action]="action"
-    *ngIf="viewType == 'FORM'"></app-form-order>
+    (addedOrderEvent)="saveOrder($event)"
+    (updatedOrderEvent)="updateOrder($event)"
+    *ngIf="viewType == VIEW_TYPES.FORM"></app-form-order>
   <span class="spacer"></span>
 </main>
