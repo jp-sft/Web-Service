@@ -1,7 +1,9 @@
 package tn.ipsas.factureservice.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import tn.ipsas.factureservice.domain.user.Customer;
+import tn.ipsas.factureservice.model.user.Customer;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +27,11 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus Status = OrderStatus.CREATED;
 
+
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private List<OrderLine> orderLines = new ArrayList<>();
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @Transient
     private Customer customer;
+    private Long customerId;
 }

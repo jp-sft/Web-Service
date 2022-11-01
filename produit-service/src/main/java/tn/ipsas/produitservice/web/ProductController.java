@@ -53,6 +53,10 @@ public class ProductController {
     public Iterable<Product> getProducts(){
         return productRepository.findAll();
     }
+    @GetMapping("products/{id}")
+    public Product getProduct(@PathVariable Long id){
+        return productRepository.getById(id);
+    }
 
     @PostMapping("products")
     public Product saveProduct(@RequestBody Product product){

@@ -1,6 +1,7 @@
 package tn.ipsas.produitservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.GeneratorType;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString
 public class Product {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

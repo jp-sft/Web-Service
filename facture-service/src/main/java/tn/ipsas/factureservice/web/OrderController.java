@@ -8,6 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import tn.ipsas.factureservice.domain.Order;
+import tn.ipsas.factureservice.feign.ProductServiceFeign;
+import tn.ipsas.factureservice.feign.UserServiceFeign;
+import tn.ipsas.factureservice.model.product.Product;
+import tn.ipsas.factureservice.model.user.Customer;
 import tn.ipsas.factureservice.service.OrderLineRepository;
 import tn.ipsas.factureservice.service.OrderRepository;
 
@@ -21,6 +25,9 @@ import java.util.*;
 public class OrderController {
     OrderRepository orderRepository;
     OrderLineRepository orderLineRepository;
+    UserServiceFeign userServiceFeign;
+    ProductServiceFeign productServiceFeign;
+
 
 //    @GetMapping(value = "orders/search")
 //    public Iterable<Order> searchOrder(@RequestParam("query") String query,
@@ -47,15 +54,48 @@ public class OrderController {
 //                .body(bytes);
 //    }
 
+    @GetMapping("orders/{id}")
+    private Order findOrderById(@PathVariable Long id){
+        Order order = orderRepository.getById(id);
+
+        Customer customer = userServiceFeign.findCustomerById(order.getCustomerId());
+        order.setCustomer(customer);
+
+        order.getOrderLines().forEach(orderLine -> {
+            Product product = productServiceFeign.findProductById(orderLine.getProductId());
+            orderLine.setProduct(product);
+        });
+
+        return order;
+    }
 
     @GetMapping("orders")
     public Iterable<Order> getOrders(){
-        return orderRepository.findAll();
+
+        List<Order> orders = orderRepository.findAll();
+        orders.forEach(order -> {
+            Customer customer = userServiceFeign.findCustomerById(order.getCustomerId());
+            order.setCustomer(customer);
+
+            order.getOrderLines().forEach(orderLine -> {
+                Product product = productServiceFeign.findProductById(orderLine.getProductId());
+                orderLine.setProduct(product);
+            });
+        });
+        return orders;
     }
 
     @PostMapping("orders")
     public Order saveOrder(@RequestBody Order order){
-        return orderRepository.save(order);
+        order = orderRepository.save(order);
+        Customer customer = userServiceFeign.findCustomerById(order.getCustomerId());
+        order.setCustomer(customer);
+
+        order.getOrderLines().forEach(orderLine -> {
+            Product product = productServiceFeign.findProductById(orderLine.getProductId());
+            orderLine.setProduct(product);
+        });
+        return order;
     }
 
     @PutMapping("orders/{id}")

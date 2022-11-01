@@ -1,4 +1,4 @@
-package tn.ipsas.factureservice.domain.product;
+package tn.ipsas.factureservice.model.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
@@ -8,30 +8,30 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "products")
+//@Entity
+//@Table(name = "products")
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString
 public class Product {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+//    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id", nullable = false)
     private Long id;
 
     private String name;
 
     private Double weight;
 
-    @Column(columnDefinition = "Text")
+//    @Column(columnDefinition = "Text")
     private String description;
 
-    @Column(name="unit_price")
+//    @Column(name="unit_price")
     private Double unitPrice;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
+//    @ManyToOne
+//    @JoinColumn(name = "category_id")
     private Category category;
 
     // For stat
     @JsonIgnore
-    @Transient
+//    @Transient
     private List<OrderLine> orderLines = new ArrayList<>();
 }

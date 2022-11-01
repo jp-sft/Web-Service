@@ -1,8 +1,9 @@
 package tn.ipsas.factureservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import tn.ipsas.factureservice.domain.product.Product;
+import tn.ipsas.factureservice.model.product.Product;
 
 import javax.persistence.*;
 
@@ -24,11 +25,11 @@ public class OrderLine {
     private Double subTotal;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @JsonIgnore
     private Order order;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
+    @Transient
     private Product product;
+    private Long productId;
 }

@@ -26,6 +26,10 @@ public class CustomerController {
     public Iterable<Customer> findAll(){
         return customerRepository.findAll();
     }
+    @GetMapping("/customers/{id}")
+    public Customer findCustomerById(@PathVariable Long id){
+        return customerRepository.getById(id);
+    }
 
     @GetMapping(value = "customers/{id}/image", produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> getImage(@PathVariable Integer id) throws IOException {
