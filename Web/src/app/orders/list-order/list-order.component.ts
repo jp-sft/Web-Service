@@ -15,7 +15,7 @@ export class ListOrderComponent implements OnInit {
 
   @ViewChild('table') table!: MatTable<Order>;
   rowClicked: number | null = -1;
-  displayedColumns=  ["id", "customer", "ordersLine", "createdDate", "status"];
+  displayedColumns=  ["id", "customer", "ordersLine", "createdDate", "amount", "status"];
   columnsToDisplayWithExpand = [...this.displayedColumns];
 
   constructor() { }

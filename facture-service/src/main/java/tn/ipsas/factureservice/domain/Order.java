@@ -2,6 +2,7 @@ package tn.ipsas.factureservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import tn.ipsas.factureservice.model.user.Customer;
 
@@ -20,18 +21,23 @@ public class Order {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    private Date createdDate;
+    private Date createdDate = new Date();
 
     @Enumerated(EnumType.STRING)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private OrderStatus Status = OrderStatus.CREATED;
 
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL)
     private List<OrderLine> orderLines = new ArrayList<>();
 
     @Transient
     private Customer customer;
     private Long customerId;
+    private Double amount;
 }

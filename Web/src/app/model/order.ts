@@ -7,6 +7,8 @@ export interface Order {
   createdDate: Date | null;
   orderLines: OrderLine[];
   customer: Customer | null;
+  customerId: number | null;
+  amount: number | null;
   status: string; //TODO: Create Status enum
 }
 
@@ -31,6 +33,8 @@ export class OrderForm {
         createdDate: new FormControl<Date | null>(null),
         status: new FormControl<string | null>('CREATED'),
         customer: new FormControl<Customer | null>(null),
+        customerId: new FormControl<number | null>(null),
+        amount: new FormControl<number | null>(null),
         orderLines: new FormArray([OrderLine.asFormGroup(new OrderLine())])
       }
     )
@@ -42,5 +46,7 @@ export const customControlOrderForm = {
   createdDate: new FormControl<Date | null>(null),
   status: new FormControl<string | null>('CREATED'),
   customer: new FormControl<Customer | null>(null),
+  customerId: new FormControl<number | null>(null),
+  amount: new FormControl<number | null>(null),
   orderLines: new FormArray([OrderLine.asFormGroup(new OrderLine())])
 }

@@ -38,14 +38,14 @@ ___
 
 ### Diagrammes de structure ou diagrammes statiques:
 
-* Diagramme des composant [link](https://fr.wikipedia.org/wiki/Diagramme_de_composants)
-* Diagramme de classes <br><img src="./class_diagram_v1.png">
+* **Diagramme des composant** [link](https://fr.wikipedia.org/wiki/Diagramme_de_composants) <br><img src="./architecture.drawio.png">
+* **Diagramme de classes** <br><img src="./class_diagram_v1.png">
 * Diagramme des paquetages [link](https://fr.wikipedia.org/wiki/Diagramme_des_paquetages)
 
 ### Diagrammes de comportement:
 
-* Diagramme états-transitions [link](https://fr.wikipedia.org/wiki/Diagramme_de_cas_d%27utilisation)
-* Diagramme de cas d'utilisation [link](https://fr.wikipedia.org/wiki/Diagramme_de_cas_d%27utilisation)
+* **Diagramme états-transitions** [link](https://fr.wikipedia.org/wiki/Diagramme_de_cas_d%27utilisation)
+* **Diagramme de cas d'utilisation** [link](https://fr.wikipedia.org/wiki/Diagramme_de_cas_d%27utilisation)
 * Diagramme états-transitions [link](https://fr.wikipedia.org/wiki/Diagramme_d%27activit%C3%A9)
 
 ### Diagrammes d'interaction ou diagrammes dynamiques:

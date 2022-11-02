@@ -9,7 +9,8 @@
      <button mat-button color="primary" class="p-2 me-2"
               (click)="saveCurentOrder()"
                *ngIf="viewType==VIEW_TYPES.FORM"
-              [disabled]="!orderForm.valid">Save
+              >Save
+<!--              [disabled]="!orderForm.valid">Save-->
       </button>
       <button mat-button color="accent" class="p-2 me-2"
               (click)="cancelSaveOrder()"

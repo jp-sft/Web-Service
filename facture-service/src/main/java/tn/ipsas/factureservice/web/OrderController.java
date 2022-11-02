@@ -1,33 +1,24 @@
 package tn.ipsas.factureservice.web;
 
 import lombok.AllArgsConstructor;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import tn.ipsas.factureservice.domain.Order;
 import tn.ipsas.factureservice.feign.ProductServiceFeign;
 import tn.ipsas.factureservice.feign.UserServiceFeign;
 import tn.ipsas.factureservice.model.product.Product;
 import tn.ipsas.factureservice.model.user.Customer;
-import tn.ipsas.factureservice.service.OrderLineRepository;
-import tn.ipsas.factureservice.service.OrderRepository;
+import tn.ipsas.factureservice.repository.OrderLineRepository;
+import tn.ipsas.factureservice.services.OrderService;
 
-import javax.websocket.server.PathParam;
-import java.io.IOException;
 import java.util.*;
 
 @RestController()
 @AllArgsConstructor
 @CrossOrigin(origins = "http://localhost:4200")
 public class OrderController {
-    OrderRepository orderRepository;
-    OrderLineRepository orderLineRepository;
-    UserServiceFeign userServiceFeign;
-    ProductServiceFeign productServiceFeign;
-
+    OrderService orderService;
 
 //    @GetMapping(value = "orders/search")
 //    public Iterable<Order> searchOrder(@RequestParam("query") String query,
@@ -55,61 +46,46 @@ public class OrderController {
 //    }
 
     @GetMapping("orders/{id}")
-    private Order findOrderById(@PathVariable Long id){
-        Order order = orderRepository.getById(id);
-
-        Customer customer = userServiceFeign.findCustomerById(order.getCustomerId());
-        order.setCustomer(customer);
-
-        order.getOrderLines().forEach(orderLine -> {
-            Product product = productServiceFeign.findProductById(orderLine.getProductId());
-            orderLine.setProduct(product);
-        });
-
-        return order;
+    private ResponseEntity<Order> findOrderById(@PathVariable Long id) {
+        return orderService.getById(id)
+                .map(order -> ResponseEntity.ok().body(order))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping("orders")
-    public Iterable<Order> getOrders(){
-
-        List<Order> orders = orderRepository.findAll();
+    public ResponseEntity<Iterable<Order>> getOrders() {
+        Iterable<Order> orders = orderService.getAll();
         orders.forEach(order -> {
-            Customer customer = userServiceFeign.findCustomerById(order.getCustomerId());
-            order.setCustomer(customer);
-
-            order.getOrderLines().forEach(orderLine -> {
-                Product product = productServiceFeign.findProductById(orderLine.getProductId());
-                orderLine.setProduct(product);
-            });
+            order = orderService.getCompleteOrder(order);
         });
-        return orders;
+        return ResponseEntity.ok().body(orders);
     }
 
     @PostMapping("orders")
-    public Order saveOrder(@RequestBody Order order){
-        order = orderRepository.save(order);
-        Customer customer = userServiceFeign.findCustomerById(order.getCustomerId());
-        order.setCustomer(customer);
-
-        order.getOrderLines().forEach(orderLine -> {
-            Product product = productServiceFeign.findProductById(orderLine.getProductId());
-            orderLine.setProduct(product);
-        });
-        return order;
+    public ResponseEntity<Order> saveOrder(@RequestBody Order order) {
+        return orderService.save(order)
+                .map(value -> new ResponseEntity<>(value, HttpStatus.CREATED))
+                .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
     @PutMapping("orders/{id}")
-    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order order){
-        //TODO: Check id
-        if (order == null || id == null || !Objects.equals(id, order.getId()))
-            return ResponseEntity.notFound().build();
-        return ResponseEntity.ok().body(orderRepository.save(order));
+    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order order) {
+        if (!Objects.equals(order.getId(), id))
+            return ResponseEntity.badRequest().build();
+        return orderService.getById(id)
+                .map(o -> {
+                    Order order1 = orderService.getById(id).orElse(null);
+                    return ResponseEntity.ok().body(order1);
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("orders/{id}")
-    public void deleteOrder(@PathVariable Long id){
-        //TODO: Check id
-        orderRepository.deleteById(id);
+    public ResponseEntity deleteOrder(@PathVariable Long id) {
+        if (orderService.delete(id))
+            return ResponseEntity.ok().build();
+        else
+            return ResponseEntity.notFound().build();
     }
 
 }

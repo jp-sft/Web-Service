@@ -71,12 +71,13 @@ export class OrdersComponent implements OnInit {
   }
 
   saveOrder($event: Order) {
+    console.log($event)
     this.orderService.save($event).subscribe(data => {
-      this.orders = [$event, ...this.orders]
+      this.orders = [data, ...this.orders]
       this.action = ACTIONS.NONE;
       this.viewType = VIEW_TYPES.LIST;
       this.orderForm = OrderForm.getFormGroup()
-      this.messageService.add(`[ADD] order :${JSON.stringify($event)}`);
+      this.messageService.add(`[ADD] order :${JSON.stringify(data)}`);
     })
   }
 

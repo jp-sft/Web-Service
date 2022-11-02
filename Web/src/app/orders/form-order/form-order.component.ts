@@ -27,18 +27,19 @@ export class FormOrderComponent implements OnInit {
   columns = ["subTotal", "product", "taxStatus", "weight", "quantity"];
   columnsToDisplayWithExpand = [...this.columns]; //, 'action'
   private order!: Order
-  compareFunction(o1: any, o2: any): boolean{
-    return ( o1.id == o2.id);
+
+  compareFunction(o1: any, o2: any): boolean {
+    return (o1.id == o2.id);
   };
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.customerService.findAll()
       .subscribe(value => this.customers = value);
     this.productService.findAll()
       .subscribe(value => this.products = value);
   }
 
-  get orderLines() : FormArray{
+  get orderLines(): FormArray {
     console.log(this.dataSource.get('orderLines') as FormArray)
     return this.dataSource.get('orderLines') as FormArray;
   };
@@ -65,18 +66,21 @@ export class FormOrderComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.dataSource.valid)
+    // console.log(this.dataSource.valid)
+    // console.log(this.dataSource.value)
+    // if (this.dataSource.valid) {
+    this.order = (this.dataSource.value as Order);
+    // @ts-ignore
+    this.order.customerId = this.order.customer?.id;
+    this.order.orderLines.forEach(value => value.productId = value.product?.id);
     console.log(this.dataSource.value)
-    if (this.dataSource.valid) {
-      this.order = (this.dataSource.value as Order);
-      console.log(this.dataSource.value['id'])
-      console.log(this.order.id)
-      if (this.action == ACTIONS.ADD && this.order.id == null) {
-        this.addedOrderEvent.emit(this.order);
-      }
-      else if (this.action == ACTIONS.ADD && this.order.id != null) {
-        this.updatedOrderEvent.emit(this.order);
-      }
+    // console.log(this.dataSource.value['id'])
+    // console.log(this.order.id)
+    if (this.action == ACTIONS.ADD && this.order.id == null) {
+      this.addedOrderEvent.emit(this.order);
+    } else if (this.action == ACTIONS.ADD && this.order.id != null) {
+      this.updatedOrderEvent.emit(this.order);
     }
+    // }
   }
 }

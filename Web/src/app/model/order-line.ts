@@ -17,6 +17,7 @@ export class OrderLine {
   weight: number | undefined;
   subTotal: number | undefined;
   product: Product | undefined;
+  productId: number | undefined;
 
   static asFormGroup(orderLine: OrderLine): FormGroup {
     return new FormGroup({
@@ -25,7 +26,8 @@ export class OrderLine {
       taxStatus: new FormControl(orderLine.taxStatus),
       weight: new FormControl(orderLine.weight),
       subTotal: new FormControl(orderLine.subTotal, Validators.required),
-      product: new FormControl(orderLine.product, Validators.required)
+      product: new FormControl(orderLine.product),
+      productId: new FormControl(orderLine.productId, Validators.required)
     });
   }
 }
@@ -37,5 +39,6 @@ export const
     taxStatus: new FormControl<string | null>('CREATED'),
     weight: new FormControl<number>(0),
     subTotal: new FormControl<number>(0),
-    product: new FormControl<Product | null>(null)
+    product: new FormControl<Product | null>(null),
+    productId: new FormControl<number | null>(null)
   }
