@@ -36,9 +36,21 @@ ___
     * Afficher les factures réglées et les factures non encore réglées
     * La liste des dettes par client
 
+### Comprendre Spring pour nôtre application
+
+* **Spring MVC : Flux de travail avec `RestController`**
+
+1. Le client passe par le `dispatcher` pour envoyer et recevoir les requêtes.
+2. Le `dispatcher` fait appel au `handlermapping` pour trouver le controller adéquate en fonction de `uri` et retourne
+   au dispatcher.
+3. Le dispatcher fait appel au `handleadapter` pour appeller la méthode spécifique dans le controller
+4. Le `controller` fait appel à la partie logique
+5. Spring convertie le resultat sous format JSON/XML et le `dispatcher` retoure la reponse au client.
+<img src="./springMvcForRestControllerFlow.drawio.png">
 ### Diagrammes de structure ou diagrammes statiques:
 
-* **Diagramme des composant** [link](https://fr.wikipedia.org/wiki/Diagramme_de_composants) <br><img src="./architecture.drawio.png">
+* **Diagramme des
+  composant** [link](https://fr.wikipedia.org/wiki/Diagramme_de_composants) <br><img src="./architecture.drawio.png">
 * **Diagramme de classes** <br><img src="./class_diagram_v1.png">
 * Diagramme des paquetages [link](https://fr.wikipedia.org/wiki/Diagramme_des_paquetages)
 
